@@ -9,7 +9,7 @@ const rename = require('gulp-rename');
 const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const postcss = require('gulp-postcss');
-const rewriteCSS = require('gulp-rewrite-css');
+const replace = require('gulp-replace');
 
 let isDev = true;
 let isProd = !isDev;
@@ -44,9 +44,7 @@ function styles() {
 		.pipe(postcss([ autoprefixer() ]))
         .pipe(rename('all.css'))
 		.pipe(sourcemaps.write('.'))
-		.pipe(rewriteCSS({
-			destination: dist,
-		}))
+		.pipe(replace('../../', '../'))
 		.pipe(gulp.dest('./dist/css'))
 		.pipe(browserSync.stream());
 }
