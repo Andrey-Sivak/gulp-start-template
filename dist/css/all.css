@@ -1,0 +1,17 @@
+body,
+p,
+ul, li,
+h1, h2, h3, h4, h5, h6,
+input,
+textarea,
+a {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border: none;
+  text-decoration: none; }
+
+* {
+  box-sizing: border-box; }
+
+/*# sourceMappingURL=all.css.map */
