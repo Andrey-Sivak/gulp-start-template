@@ -1,0 +1,19 @@
+$breakpoints: (
+        small: 767px,
+        medium: 992px,
+        large: 1200px
+);
+
+$colors: (
+        main-color: #FA6ACC,
+        sky-color: #09A6E4,
+        other-color: #F02A52
+);
+
+$z-layers: (
+        bottomless-pit: -9999,
+        default: 1,
+        dropdown: 3000,
+        overlay: 4000,
+        modal: 4001
+);

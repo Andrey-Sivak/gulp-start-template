@@ -1,0 +1,33 @@
+@mixin response-to ( $breakpoint ) {
+  @if( map-has-key( $breakpoints, $breakpoint ) ) {
+    @media( max-width: #{map-get( $breakpoints, $breakpoint ) } ) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}` . ' +
+      'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin font-face($path, $family, $type, $weight, $style: normal) {
+  @font-face {
+    font-family: $family;
+    src: url('#{$path}#{$type}.ttf') format('truetype');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@mixin flex( $direction: row, $j-c: flex-start, $a-i: flex-start, $flex-wrap: wrap ) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $j-c;
+  align-items: $a-i;
+  flex-wrap: $flex-wrap;
+}
+
+@mixin flex-center( $direction: row, $flex-wrap: wrap) {
+  @include flex( $direction, center, center, $flex-wrap );
+}
