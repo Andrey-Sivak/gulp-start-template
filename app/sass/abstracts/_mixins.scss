@@ -39,3 +39,13 @@
     @content;
   }
 }
+
+@mixin message-tint( $color, $background-color: null ) {
+  color: $color;
+
+  @if ( type_of( $color ) == 'color' ) {
+    background-color: lighten( $color, 30% );
+  } @else {
+    @warn 'Parameter $color for message mixin should be a color.';
+  }
+}

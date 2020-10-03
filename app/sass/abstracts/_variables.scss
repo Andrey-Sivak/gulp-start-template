@@ -10,6 +10,12 @@ $colors: (
         other-color: #F02A52
 );
 
+$message-themes: (
+        'info': blue,
+        'confirm': green,
+        'warning': red
+);
+
 $z-layers: (
         bottomless-pit: -9999,
         default: 1,

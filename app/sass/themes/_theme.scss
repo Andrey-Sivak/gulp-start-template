@@ -1,0 +1,16 @@
+.message {
+  padding: 10px;
+  border: 2px solid currentColor;
+  width: 10%;
+  margin: 5rem auto;
+  text-align: center;
+  border-radius: 0.4em;
+
+  & {
+    @each $theme, $color in $message-themes {
+      &-#{$theme} {
+        @include message-tint($color);
+      }
+    }
+  }
+}
