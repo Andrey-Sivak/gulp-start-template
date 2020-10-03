@@ -6,11 +6,9 @@
   text-align: center;
   border-radius: 0.4em;
 
-  & {
-    @each $theme, $color in $message-themes {
-      &-#{$theme} {
-        @include message-tint($color);
-      }
+  @each $theme, $color in $message-themes {
+    &-#{$theme} {
+      @include message-tint($color);
     }
   }
 }
