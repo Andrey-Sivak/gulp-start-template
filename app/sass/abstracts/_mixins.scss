@@ -11,12 +11,54 @@
   }
 }
 
-@mixin font-face($path, $family, $type, $weight, $style: normal) {
+@mixin font-face($path, $family, $type: null, $extension: null, $style: null) {
+  // font-weight values map
+  $font-weights: (
+          'Thin': 100,
+          'Extra-Light': 200,
+          'Light': 300,
+          'Regular': 400,
+          'Medium': 500,
+          'Simi-Bold': 600,
+          'Bold': 700,
+          'Extra-Bold': 800,
+          'Black': 900,
+          'Extra-Black': 950
+  );
+
   @font-face {
     font-family: $family;
-    src: url('#{$path}#{$type}.ttf') format('truetype');
-    font-weight: $weight;
-    font-style: $style;
+
+    // set font-weight property
+    @if $type {
+      @each $weight-name, $weight-value in $font-weights {
+        @if $type == $weight-name {
+          font-weight: $weight-value;
+        }
+      }
+    } @else {
+      font-weight: 400;
+    }
+
+    // check font extension and font-type and then set src property
+    @if $extension and $type {
+      src: url('#{$path}/#{$family}-#{$type}.#{$extension}') format('truetype');
+    } @else if $extension or $type {
+      @if $type {
+        src: url('#{$path}/#{$family}-#{$type}.ttf') format('truetype');
+      } @else if $extension {
+        src: url('#{$path}/#{$family}.#{$extension}') format('truetype');
+      }
+    } @else {
+      src: url('#{$path}/#{$family}.ttf');
+    }
+
+    // set font-style property
+    @if $style {
+      font-style: $style;
+    } @else {
+      font-style: normal;
+    }
   }
 }
 
@@ -48,4 +90,12 @@
   } @else {
     @warn 'Parameter $color for message mixin should be a color.';
   }
+}
+
+@mixin pos-absolute( $top: null, $right: null, $bottom: null, $left: null ) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
 }
